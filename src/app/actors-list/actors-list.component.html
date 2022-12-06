@@ -1,20 +1,20 @@
 <div class="container w-50 text-center">
     <div>
-        <h1 >Liste des acteurs</h1>
+        <h1 >Liste des acteurs / actrices</h1>
     </div>
     <div *ngFor = 'let myDatas of data' class="text-center">
-            <div>
+<!--             <div>
                 <strong>ID: </strong> {{myDatas.id}}
-            </div>
-            <div>
+            </div> -->
+            <h4>
                 <strong> Prénom : </strong>{{myDatas.firstname}}
-            </div>
-            <div>
+            </h4>
+            <h4>
                 <strong> Nom : </strong>{{myDatas.lastname}}
-            </div>
-            <button type="submit" class="btn btn-primary" (click)="deleteActor(myDatas.id)">supprimer cet acteur</button>
+            </h4>
+            <button type="submit" class="btn btn-primary mb-5" (click)="deleteActor(myDatas.id)">Supprimez</button>
     </div>
-    <div class="mt-5">
-        <a [routerLink]="['/add-actor']">Ajouter un acteur</a>
+    <div class="mt-5 mb-5">
+        <a [routerLink]="['/add-actor']">Ajoutez un acteur / une actrice</a>
     </div>
 </div>

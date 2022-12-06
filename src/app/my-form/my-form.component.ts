@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Actor } from '../models/actor.model';
 import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-form',
@@ -10,34 +11,13 @@ import { ApiService } from '../services/api.service';
 })
 export class MyFormComponent implements OnInit {
 
-  actor : Actor = new Actor();
+  actor: Actor = new Actor();
   
-  data : any;
+  data: any;
 
-  myUrl = 'http://localhost:8000/api/special_actors.json';
-
-  constructor(public myHttp : HttpClient) { }
+  constructor(private apiService : ApiService, private router: Router) { }
 
   ngOnInit(): void { }
-
-  addActor() {
-    console.log(this.actor.firstname);
-    console.log(this.actor.lastname); 
-    const headers = { 'content-type': 'application/json'}  
-    const body=JSON.stringify(this.actor);
-    return this.myHttp.post(this.myUrl, body, {'headers':headers}).subscribe(data => {
-      console.log(data);
-    });
-  }
-
-  /* actor: Actor = new Actor();
-  
-  data : any;
-
-  constructor(private apiService : ApiService) { }
-
-  ngOnInit(): void { }
-
 
   addActor() {
     console.log(this.actor.firstname);
@@ -45,6 +25,8 @@ export class MyFormComponent implements OnInit {
 
     this.apiService.addActor(this.actor).subscribe(data => {
       console.log(data);
+      this.router.navigate(["/actors-list"]);
     });
-  } */
+  }
+
 }
